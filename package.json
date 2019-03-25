@@ -1,6 +1,6 @@
 {
   "name": "gendiff-ms",
-  "version": "1.0.4",
+  "version": "1.0.7",
   "description": "Simply app for finding differences in files",
   "main": "index.js",
   "bin": {
