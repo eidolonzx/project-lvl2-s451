@@ -1,0 +1,29 @@
+{
+  "name": "gendiff-ms",
+  "version": "1.0.4",
+  "description": "Simply app for finding differences in files",
+  "main": "index.js",
+  "bin": {
+    "gendiff": "dist/bin/gendiff.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "babel-node": "babel-node",
+    "build": "cross-env NODE_ENV=production babel src --out-dir dist --source-maps inline",
+    "prepublishOnly": "npm run build"
+  },
+  "author": "Michael Solovyev",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "cross-env": "^5.2.0"
+  },
+  "dependencies": {
+    "commander": "^2.19.0"
+  }
+}

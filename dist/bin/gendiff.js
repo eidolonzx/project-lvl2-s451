@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+'use strict';
+
+var _commander = require('commander');
+
+var _commander2 = _interopRequireDefault(_commander);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var program = _commander2.default;
+
+program.arguments('<firstConfig> <secondConfig>').description('Compares two configuration files and shows a difference.').option('-h, --help', 'output usage information').option('-v, --verson', 'output usage information').option('-f, --format [type]', 'Output format');
+
+program.parse(process.argv);
+
+console.log('app is running');
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL3NyYy9iaW4vZ2VuZGlmZi5qcyJdLCJuYW1lcyI6WyJwcm9ncmFtIiwiY29tbWFuZGVyIiwiYXJndW1lbnRzIiwiZGVzY3JpcHRpb24iLCJvcHRpb24iLCJwYXJzZSIsInByb2Nlc3MiLCJhcmd2IiwiY29uc29sZSIsImxvZyJdLCJtYXBwaW5ncyI6Ijs7QUFDQTs7Ozs7O0FBRUEsSUFBTUEsVUFBVUMsbUJBQWhCOztBQUVBRCxRQUNLRSxTQURMLENBQ2UsOEJBRGYsRUFFS0MsV0FGTCxDQUVpQiwwREFGakIsRUFHS0MsTUFITCxDQUdZLFlBSFosRUFHMEIsMEJBSDFCLEVBSUtBLE1BSkwsQ0FJWSxjQUpaLEVBSTRCLDBCQUo1QixFQUtLQSxNQUxMLENBS1kscUJBTFosRUFLbUMsZUFMbkM7O0FBT0FKLFFBQVFLLEtBQVIsQ0FBY0MsUUFBUUMsSUFBdEI7O0FBRUFDLFFBQVFDLEdBQVIsQ0FBWSxnQkFBWiIsImZpbGUiOiJnZW5kaWZmLmpzIiwic291cmNlc0NvbnRlbnQiOlsiXHJcbmltcG9ydCBjb21tYW5kZXIgZnJvbSAnY29tbWFuZGVyJztcclxuXHJcbmNvbnN0IHByb2dyYW0gPSBjb21tYW5kZXI7XHJcblxyXG5wcm9ncmFtXHJcbiAgICAuYXJndW1lbnRzKCc8Zmlyc3RDb25maWc+IDxzZWNvbmRDb25maWc+JylcclxuICAgIC5kZXNjcmlwdGlvbignQ29tcGFyZXMgdHdvIGNvbmZpZ3VyYXRpb24gZmlsZXMgYW5kIHNob3dzIGEgZGlmZmVyZW5jZS4nKVxyXG4gICAgLm9wdGlvbignLWgsIC0taGVscCcsICdvdXRwdXQgdXNhZ2UgaW5mb3JtYXRpb24nKVxyXG4gICAgLm9wdGlvbignLXYsIC0tdmVyc29uJywgJ291dHB1dCB1c2FnZSBpbmZvcm1hdGlvbicpXHJcbiAgICAub3B0aW9uKCctZiwgLS1mb3JtYXQgW3R5cGVdJywgJ091dHB1dCBmb3JtYXQnKVxyXG5cclxucHJvZ3JhbS5wYXJzZShwcm9jZXNzLmFyZ3YpO1xyXG5cclxuY29uc29sZS5sb2coJ2FwcCBpcyBydW5uaW5nJyk7Il19
