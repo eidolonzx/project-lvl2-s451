@@ -6,3 +6,9 @@ start:
 
 publish:
 	npm publish
+
+test:
+	npm run test
+
+lint:
+	npx eslint .
