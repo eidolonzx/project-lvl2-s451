@@ -6,34 +6,35 @@ import getParseFormat from './parsers';
 const parse = (filePath) => {
   const extension = path.extname(filePath);
   const rawObject = fs.readFileSync(filePath, 'utf-8');
-  const parser = getParseFormat(extension);
-  const parsedObject = parser(rawObject);
+  const makeParsedObject = getParseFormat(extension);
+  const parsedObject = makeParsedObject(rawObject);
   return parsedObject;
 };
 
 const compare = (object1, object2) => {
   // 1. Get keys
-  const keys1 = Object.keys(object1);
-  const keys2 = Object.keys(object2);
-  const allKeys = _.union(keys1, keys2);
-  const result = ['{'];
+  const firstObjectKeys = Object.keys(object1);
+  const secondObjectKeys = Object.keys(object2);
+  const allKeys = _.union(firstObjectKeys, secondObjectKeys);
+  const resultArray = ['{'];
 
   // 2. Make array of result strings
   allKeys.forEach((key) => {
-    if (!keys1.includes(key) && keys2.includes(key)) result.push(`  + ${key}: ${object2[key]}`);
-    else if (keys1.includes(key) && !keys2.includes(key)) result.push(`  - ${key}: ${object1[key]}`);
-    else if (object1[key] === object2[key]) result.push(`  ${key}: ${object1[key]}`);
+    if (!firstObjectKeys.includes(key) && secondObjectKeys.includes(key)) resultArray.push(`  + ${key}: ${object2[key]}`);
+    else if (firstObjectKeys.includes(key) && !secondObjectKeys.includes(key)) resultArray.push(`  - ${key}: ${object1[key]}`);
+    else if (object1[key] === object2[key]) resultArray.push(`  ${key}: ${object1[key]}`);
     else {
-      result.push(`  - ${key}: ${object1[key]}`);
-      result.push(`  + ${key}: ${object2[key]}`);
+      resultArray.push(`  - ${key}: ${object1[key]}`);
+      resultArray.push(`  + ${key}: ${object2[key]}`);
     }
   });
-  result.push('}');
+  resultArray.push('}');
 
   // 3. Render result
-  return result.join('\n');
+  const renderedResult = resultArray.join('\n');
+  return renderedResult;
 };
 
-const gendiff = (file1, file2) => compare(parse(file1), parse(file2));
+const genDiff = (filepath1, filepath2) => compare(parse(filepath1), parse(filepath2));
 
-export default gendiff;
+export default genDiff;
