@@ -16,22 +16,17 @@ const compare = (object1, object2) => {
   const firstObjectKeys = Object.keys(object1);
   const secondObjectKeys = Object.keys(object2);
   const allKeys = _.union(firstObjectKeys, secondObjectKeys);
-  const resultArray = ['{'];
 
   // 2. Make array of result strings
-  allKeys.forEach((key) => {
-    if (!firstObjectKeys.includes(key) && secondObjectKeys.includes(key)) resultArray.push(`  + ${key}: ${object2[key]}`);
-    else if (firstObjectKeys.includes(key) && !secondObjectKeys.includes(key)) resultArray.push(`  - ${key}: ${object1[key]}`);
-    else if (object1[key] === object2[key]) resultArray.push(`  ${key}: ${object1[key]}`);
-    else {
-      resultArray.push(`  - ${key}: ${object1[key]}`);
-      resultArray.push(`  + ${key}: ${object2[key]}`);
-    }
-  });
-  resultArray.push('}');
+  const resultArray = allKeys.reduce((acc, key) => {
+    if (!firstObjectKeys.includes(key) && secondObjectKeys.includes(key)) return [...acc, `  + ${key}: ${object2[key]}`];
+    if (firstObjectKeys.includes(key) && !secondObjectKeys.includes(key)) return [...acc, `  - ${key}: ${object1[key]}`];
+    if (object1[key] === object2[key]) return [...acc, `  ${key}: ${object1[key]}`];
+    return [...acc, `  - ${key}: ${object1[key]}`, `  + ${key}: ${object2[key]}`];
+  }, []);
 
   // 3. Render result
-  const renderedResult = resultArray.join('\n');
+  const renderedResult = ['{', ...resultArray, '}'].join('\n');
   return renderedResult;
 };
 
