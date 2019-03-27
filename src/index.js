@@ -1,9 +1,13 @@
 import fs from 'fs';
+import path from 'path';
 import _ from 'lodash';
+import getParseFormat from './parsers';
 
-const parse = (path) => {
-  const rawObject = fs.readFileSync(path, 'utf-8');
-  const parsedObject = JSON.parse(rawObject);
+const parse = (filePath) => {
+  const extension = path.extname(filePath);
+  const rawObject = fs.readFileSync(filePath, 'utf-8');
+  const parser = getParseFormat(extension);
+  const parsedObject = parser(rawObject);
   return parsedObject;
 };
 

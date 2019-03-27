@@ -1,6 +1,6 @@
 {
   "name": "gendiff-ms",
-  "version": "1.0.8",
+  "version": "1.0.11",
   "description": "Simply app for finding differences in files",
   "main": "dist/index.js",
   "bin": {
@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "commander": "^2.19.0",
+    "js-yaml": "^3.13.0",
     "lodash": "^4.17.11"
   }
 }
