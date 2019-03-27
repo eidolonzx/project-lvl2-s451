@@ -10,3 +10,6 @@ https://asciinema.org/a/0PmrCCoQdVO3WR0QKpKkQyyAq
 
 Step3
 https://asciinema.org/a/cSYmduetGYzonjDuDS2SpBE8m
+
+Step4
+https://asciinema.org/a/2JevmGhUST1NvwuTB7VIb1Mgu
