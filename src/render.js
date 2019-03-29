@@ -12,12 +12,12 @@ const makeString = (object, depth) => {
 const render = (ast) => {
   const iter = (data, depth = 1) => data.map((object) => {
     const tab = calculateTabs(depth);
-    if (object.type === 'new') return `${tab}+ ${object.key}: ${makeString(object.value, depth)}`;
-    if (object.type === 'deleted') return `${tab}- ${object.key}: ${makeString(object.value, depth)}`;
+    const valueString = makeString(object.value, depth);
+    if (object.type === 'new') return `${tab}+ ${object.key}: ${valueString}`;
+    if (object.type === 'deleted') return `${tab}- ${object.key}: ${valueString}`;
     if (object.type === 'changed') return [`${tab}- ${object.key}: ${makeString(object.beforeValue, depth)}`, `${tab}+ ${object.key}: ${makeString(object.afterValue, depth)}`];
-    if (object.type === 'unchanged') return `${tab}${object.key}: ${makeString(object.value, depth)}`;
+    if (object.type === 'unchanged') return `${tab}${object.key}: ${valueString}`;
     if (object.type === 'parent') return `${tab}${object.key}: {\n${_.flatten(iter(object.children, depth + 1)).join('\n')}\n${tab}}`;
-    return console.log('Invalid node in AST!!!');
   });
   return `{\n${(_.flatten(iter(ast))).join('\n')}\n}`;
 };
