@@ -22,8 +22,10 @@ const render = (ast) => {
         return [`${tab}- ${object.key}: ${makeString(object.beforeValue, depth)}`, `${tab}+ ${object.key}: ${makeString(object.afterValue, depth)}`];
       case 'unchanged':
         return `${tab}${object.key}: ${commonResultString}`;
-      default:
+      case 'parent':
         return `${tab}${object.key}: {\n${_.flatten(iter(object.children, depth + 1)).join('\n')}\n${tab}}`;
+      default:
+        throw new Error(`${object.type} is uncorrect key type, check index.js`);
     }
   });
   return `{\n${(_.flatten(iter(ast))).join('\n')}\n}`;
