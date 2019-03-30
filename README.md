@@ -16,3 +16,6 @@ https://asciinema.org/a/2JevmGhUST1NvwuTB7VIb1Mgu
 
 Step5
 https://asciinema.org/a/g64U78jjIjfRb7YxF6F34m96m
+
+Step6
+https://asciinema.org/a/geEY8rcxFCyQ7w22Zof6BS1gH
