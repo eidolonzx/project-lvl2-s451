@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import _ from 'lodash';
 import getParseFormat from './parsers';
-import render from './render';
+import getRenderer from './renderers';
 
 const parse = (filePath) => {
   const extension = path.extname(filePath);
@@ -73,9 +73,10 @@ const makeAst = (object1, object2) => {
   return result;
 };
 
-const genDiff = (filepath1, filepath2) => {
+const genDiff = (filepath1, filepath2, format) => {
   const object1 = parse(filepath1);
   const object2 = parse(filepath2);
+  const render = getRenderer(format);
 
   const ast = makeAst(object1, object2);
   const renderedResult = render(ast);
